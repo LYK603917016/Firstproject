@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial=scale,user-scalable=no">
+    <title>李永康</title>
+    <!--加载外部资源用的标签-->
+    <!--相对路径/绝对路径-->
+    <link rel="short icon"href="Resource/icon.png">
+    <link rel="stylesheet" href="ExternalStyle.css">
+
+
+
+    <style>
+        /*成行的标签写法：display:table; width:需求值*/
+        ul{
+            display: table;
+            width: 100%;
+            background: white;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        /*成列的标签写法：display:table-cell; width:需求值*/
+        li{
+            display:table-cell;
+            width: 33.3%;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .Ds_second_section img{
+            margin-bottom: -6px;
+        }
+
+        ul li span{
+            display:block;
+        }
+
+        article{
+            margin: 20px;
+        }
+        h3{
+            color: red;
+            font-size: 18px;
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 10px;
+        }
+        h4{
+            font-size: 14px;
+        }
+
+        article p{
+            font-size: 12px;
+            text-indent: 2em;
+            line-height: 2em;
+
+        }
+    </style>
+</head>
+<body>
+<!--第一部分-->
+<!--语义化标签-->
+<header class="Ds_header">
+    <span>平台风采</span>
+</header>
+<!--第二部分-->
+<section class="Ds_section">
+    <img src="Resource/banner4.png"alt="检查网络">
+</section>
+<!--第三部分-->
+<article>
+
+
+    <h3 id="title" ></h3id>
+    <h4 id="subTitle"></h4>
+    <p id="info"></p>
+    <script>
+
+            //第一步，船舰一个请求对象
+            var xhr = new XMLHttpRequest();
+
+            //    第二部。建立与服务端的连接（找到哪个服务器去要数据）
+            xhr.open('get', 'https://mockapi.eolinker.com/2ZhGVxjacb39010e6753bd9c02ee803e6e3bfeab6e8007c/aboutus');
+
+            //设置头信息，告诉服务器，让数据以表单的形式传递过去
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+
+
+            //    第三步:向服务端发送请求
+            xhr.send();
+
+            //    第四步 ：接收服务端返回的数据
+            xhr.onreadystatechange = function () {
+                //xhr.readyState== 4  代表数据请求完成
+                //xhr.status == 200  代表数据返回成功
+
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+
+                    var responseData = JSON.parse(xhr.responseText);
+
+                    var obj = responseData.data;
+
+                    var h3 = document.getElementById("title");
+                    var h4 = document.getElementById("subTitle");
+                    var p = document.getElementById("info");
+
+                    h3.innerHTML = obj.title;
+                    h4.innerHTML - obj.subTitle;
+                    p.innerHTML = obj.info;
+
+
+                }
+             }
+
+
+    </script>
+
+</article>
+
+<footer>
+<a href="DropletService.html">
+    <img src="Resource/nav10.png" alt="">
+    <span>小滴服务</span>
+</a>
+<a href="BusinessProjectGold.html">
+    <img src="Resource/nav20.png" alt="">
+    <span>企业项目</span>
+</a>
+<a href="SeviceProcess.html">
+    <img src="Resource/nav30.png" alt="">
+    <span>服务流程</span>
+</a>
+<a   href="Platform.html">
+    <img  src="Resource/nav41.png" alt="">
+    <span style="color: red;">平台风采</span>
+</a>
+<a href="MyDroplet.html">
+    <img src="Resource/nav50.png" alt="">
+    <span>我的小滴</span>
+</a>
+</footer>
+
+</body>
+</html>
